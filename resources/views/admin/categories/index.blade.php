@@ -8,7 +8,9 @@
     @if (isset($categories))
 @foreach ($categories as $item)
 
-{{$categories->id}}
+{{$item->id}} 
+{{$item->title}}
+<br>
 
 @endforeach
 @endif

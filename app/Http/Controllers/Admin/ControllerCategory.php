@@ -42,7 +42,8 @@ class ControllerCategory extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create($request->all());
+       redirect()->route('admin.category.index');
     }
 
     /**

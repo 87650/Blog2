@@ -6,10 +6,10 @@
 
 <div>
     @if (isset($categories))
-@foreach ($categories as $item)
+@foreach ($categories as $category)
 
-{{$item->id}} 
-{{$item->title}}
+{{$category->id}}
+<a href="{{route('admin.category.show', $category)}}"> {{$category->title}} </a> <a href="{{route('admin.category.edit', $category)}}"> Редактировать </a>
 <br>
 
 @endforeach

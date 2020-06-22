@@ -13,7 +13,6 @@
 <p>
 
     <input type="text" name="title"> Категория <br>
-
     <label for="">Родительская категория</label>
     <select class="form-control" name="parent_id">
   <option value="0">-- без родительской категории --</option>

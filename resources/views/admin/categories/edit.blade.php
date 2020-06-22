@@ -4,10 +4,12 @@
 
 
 
-
-
  <form action="{{route('admin.category.update', $category)}}" method="POST">
+
+    <input type="hidden" name="__method" value="PUT">
+
     {{csrf_field()}}
+    @method('PUT')
 <p>
 
     <input type="text" name="title"> Категория <br>
@@ -22,9 +24,13 @@
     <option value="0">Опубликовано</option>
     <option value="1">Не Опубликовано</option>
      </select>
-     <input type="submit" value="Сохранить">
+     <input type="submit" value="Сохранит">
 
 
 </p>
 
 </form>
+
+
+
+@endsection

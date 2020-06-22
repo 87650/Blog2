@@ -66,9 +66,9 @@ class ControllerCategory extends Controller
     public function edit(Category $category)
     {
         return view('admin.categories.edit', [
-            'category'   => [],
+            'category' => $category,
             'categories' => Category::with('children')->where('parent_id', '0')->get(),
-            'delimiter'  => '']);
+            ]);
     }
 
     /**
@@ -80,8 +80,16 @@ class ControllerCategory extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->update($request->all);
+        /*
+        //$category->update($request->all());
+         Category::update('update (title,parent_id,published)
+         set title = ?, parent_id = ?,published = ?  where id = ?',
+         [$category->title, $category->parent_id,$category->published]);
+        //return redirect()->route('admin.category.index');
+        */
+        $category->update($request->all());
         return redirect()->route('admin.category.index');
+
     }
 
     /**
@@ -92,6 +100,7 @@ class ControllerCategory extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('admin.category.index');
     }
 }

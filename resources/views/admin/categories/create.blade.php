@@ -4,7 +4,7 @@
 
 
 
-  <form action="{{route('admin.category.create')}}" method="POST">
+  <form action="{{route('admin.category.store')}}" method="POST">
     {{csrf_field()}}
 <p>
 

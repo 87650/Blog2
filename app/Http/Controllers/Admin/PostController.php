@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
-class Post extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class Post extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.post.index', ['posts' => Post::paginate(10)]);
     }
 
     /**
@@ -25,7 +26,8 @@ class Post extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.post.create',
+        ['categories' => Category::with('children')->where('parent_id', '0')->get()]);
     }
 
     /**
@@ -36,7 +38,8 @@ class Post extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create($request->all());
+       return redirect()->route('admin.post.index');
     }
 
     /**

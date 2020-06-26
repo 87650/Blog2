@@ -11,15 +11,22 @@ class CreatePostsTable extends Migration
      *
      * @return void
      */
-    /*
+
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('post');
+            $table->integer('parent_id')->nullable();
+            $table->tinyInteger('published')->nullable();
+            $table->string('name_create')->nullable();;
+            $table->integer('created_by')->nullable();
+            $table->integer('modified_by')->nullable();
             $table->timestamps();
         });
     }
-    */
+
 
     /**
      * Reverse the migrations.

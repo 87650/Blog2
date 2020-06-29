@@ -50,7 +50,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.post.show', ['posts' => $post]);
     }
 
     /**
@@ -61,7 +61,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.post.edit', [
+            'post' => $post,
+            'categories' => Category::with('children')->where('parent_id', '0')->get()
+            ]);
     }
 
     /**
@@ -73,7 +76,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        return redirect()->route('admin.post.index');
     }
 
     /**

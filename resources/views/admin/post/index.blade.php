@@ -4,8 +4,8 @@
 
 @foreach ($posts as $post)
 
-{{$post->title}} <br>
-{{$post->post}}
+<a href="{{route('admin.post.show', $post)}}" >{{$post->title}} </a> <br>
+{{$post->post}} <a href="{{route('admin.post.edit', $post)}}">Редактировать</a>
 
 <br>
 

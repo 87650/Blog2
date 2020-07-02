@@ -9,8 +9,8 @@
     @method('PUT')
 <p>
 
-    <input type="text" name="title"> Имя поста <br>
-    <input type="text" name="post"> Пост<br>
+<input type="text" name="title" value="{{$post->title}}"> Имя поста <br>
+<input type="text" name="post" value="{{$post->post}}"> Пост<br>
     <label for="">Категория</label>
     <select class="form-control" name="parent_id">
   <option value="0">-- Без категории --</option>

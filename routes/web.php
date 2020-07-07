@@ -25,7 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middlware' => ['auth
     Route::resource('/category', 'ControllerCategory', ['as'=>'admin']);
     Route::resource('/post', 'PostController', ['as'=>'admin']);
     Route::get('/', 'Index\IndexAdminController@index_admin');
-
+    Route::get('/{id}', 'Index\IndexAdminController@index_admin_category')->name('id');
 
 });
 

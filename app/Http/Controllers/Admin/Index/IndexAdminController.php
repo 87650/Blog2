@@ -12,9 +12,18 @@ class IndexAdminController extends Controller
     public function index_admin()
     {
         $categories = DB::table('categories')->get();
-        $categories = DB::table('categories')->get();
+        $post = DB::table('posts')->get();
 
-        return view('admin.indexAdmin');
+        return view('admin.indexAdmin',['categories'=>$categories], ['posts'=>$post]);
 
     }
+    public function index_admin_category($id)
+    {
+        $categories = DB::table('categories')->get();
+        $post = DB::select('select * from posts where parent_id = ?', [$id]);
+
+        return view('admin.indexcategory',['categories'=>$categories], ['posts'=>$post]);
+
+    }
+
 }

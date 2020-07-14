@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Comments;
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Comments extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class Comments extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.comments.index', ['comments' => Comments::paginate(10)]);
     }
 
     /**
@@ -25,7 +26,7 @@ class Comments extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.comments.create', ['categories' => Category::get()]);
     }
 
     /**

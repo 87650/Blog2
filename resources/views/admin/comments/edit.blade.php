@@ -2,11 +2,13 @@
 
 @section('content')
 
+<form action="{{route('admin.comments.update', $commentss)}}" method="POST">
+    <input type="hidden" name="__method" value="PUT">
 
-<form action="{{route('admin.comments.store')}}" method="POST">
     {{csrf_field()}}
+    @method('PUT')
 <p>
-    <input type="text" name="coment"> Комментарий
+    <input value="{{$comments->coment}}" type="text" name="coment"> Комментарий
      <br>
 
     <label for="">пост к комментарию</label>
@@ -30,3 +32,5 @@
 </form>
 
 @endsection
+
+

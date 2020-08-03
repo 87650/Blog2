@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Comments;
-use App\Category;
+//use App\Category;
+use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        return view('admin.comments.index', ['comments' => Comments::paginate(10)]);
+        return view('admin.comments.index', ['commentss' => Comments::paginate(10)]);
     }
 
     /**
@@ -26,7 +27,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        return view('admin.comments.create', ['categories' => Category::get()]);
+        return view('admin.comments.create', ['comments' => Comments::get(), 'posts' => Post::get()]);
     }
 
     /**
@@ -37,7 +38,8 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Comments::create($request->all());
+        return redirect()->route('admin.comments.index');
     }
 
     /**
@@ -46,9 +48,11 @@ class CommentsController extends Controller
      * @param  \App\Comments  $comments
      * @return \Illuminate\Http\Response
      */
-    public function show(Comments $comments)
+    public function show(Request $request, $id)
     {
-        //
+
+        return view('admin.comments.show', ['comments' => Comments::get(), 'id' => $id]);
+
     }
 
     /**
@@ -59,7 +63,11 @@ class CommentsController extends Controller
      */
     public function edit(Comments $comments)
     {
-        //
+        return view('admin.comments.edit', [
+            'comments' => $comments,
+            'commentss' => Comments::get(),
+            'posts' => Post::get(),
+            ]);
     }
 
     /**

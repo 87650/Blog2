@@ -15,9 +15,9 @@ class ControllerCategory extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index', [
-            'categories' => Category::paginate(10)
-         ]);
+        return view('admin.categories.index', ['categories' => Category::paginate(10)]);
+
+
     }
 
     /**
@@ -55,6 +55,8 @@ class ControllerCategory extends Controller
     public function show(Category $category)
     {
         return view('admin.categories.show', ['category' => $category]);
+
+
     }
 
     /**

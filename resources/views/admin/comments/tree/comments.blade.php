@@ -1,7 +1,8 @@
-@extends('layouts.app')
-
-@section('content')
 
 
+@foreach ($posts as $post)
+ <option value="{{$post->id}}">{{$post->id}}</option> 
 
-@endsection
+@endforeach
+
+
